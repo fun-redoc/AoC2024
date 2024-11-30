@@ -1,0 +1,60 @@
+<%@page language="abap"%>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AOC2024</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="pico.min.css">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <h1>AOC 2024</h1>
+
+    <form id="top" method="post">
+        <!--
+        dropt down box for day selection (25 days)
+        input text area for text data
+        button to start
+        label for output of result or error messages
+        -->
+
+        <label for="days"> Choose a day</label>
+        <select name="day" id="days">
+        <%
+        data(selected) = ``.
+        do 25 times.
+        %>
+        <option value="<%=sy-index%>">
+            Day&nbsp;<%=sy-index%>
+        </option>
+        <%
+        enddo.
+        %>
+        </select>
+
+        <br/><br/>
+
+        <label for="input">Puzzle Input</label>
+        <textarea id="input" name="input" cols="40" rows="10"><%=puzzleinput%></textarea>
+
+        <br/><br/>
+
+        <input type="submit" name="onInputProcessing(Run)"/>
+
+    </form>
+
+    <label>Result: <%= result%></label>
+
+    <br/><br/>
+
+  </main>
+
+</body>
+
+</html>

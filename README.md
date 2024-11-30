@@ -1,2 +1,84 @@
 # AoC2024
-Advent of Code 2024 in ABAP and JAVA
+Advent of Code 2024 in ABAP and JAVA.
+
+This years Advent of Code I'm going to resolve mostly in [ABAP](https://en.wikipedia.org/wiki/ABAP).
+
+ABAP is probably not the most suitable language for this purpose, but non the less.
+
+In case a puzzle beeing to tedious for ABAP I can switch java, e.g. if data structures like `Set` or `Map` will be needed and there is no simple way to replace them with ABAP tables. I'm very curious if this will happen.
+
+## General remarks
+
+I'm going to check in my solution code in this repository one day after the respective puzzle is unlocked complying to the terms (https://adventofcode.com/2024/about).
+
+The ABAP solution will contain only the sourcecode of the solution class. If you want to try it you will have to copy paste the class into your own system and maybe use my little AOC Framework.
+
+## Preparation
+
+since I don't have access to an ABAP System at the moment I'm going to install one locally on my laptop.
+
+I'm opting for an installation of a so called *miniSAP* in a docker container.
+
+I found a really good description on how to create a *miniSAP* System in Docker here: [SAP NW ABAP Trial in Docker by Brandon Caulfield](https://github.com/brandoncaulfield/sap-nw-abap-trial-docker-windows).
+
+## Development environment
+
+I'm goining to mostly work with the eclipse based deveopment environment ADT (Abap Development Toolkit).
+
+![ADT Screenshot](images/Screenshot%20From%202024-11-30%2011-48-05.png)
+
+If you are using SAP you can't get past SAPGUI, especially transaktion SE80
+![SE80](images/Screenshot%20From%202024-11-30%2011-49-10.png)
+
+## Framework
+
+To be able to resolve a puzzle of AoC you need to be able to process the a puzzle input an put the result into the result filed of the respective puzzle.
+
+The puzzle input is an ascii text, consisting of multiple lines. The text may be really bit. AoC also provides some small test cases. 
+
+Thus all you need is a method to upload the puzzles text as input to your solution code.
+
+I decided to create a litte frame work where i can use a browser to upload the solution.
+
+### Implementation of the Frameowrk
+
+#### Web Page
+
+To keep the things as simple as possible I'm going to write a simple [`bsp`](https://help.sap.com/doc/saphelp_snc700_ehp01/7.0.1/en-US/5a/f8b53a364e0e5fe10000000a11405a/content.htm?no_cache=true) Page.
+
+`bsp` (Business Service Pages) is a web technology from the 90'ties, just like jsp or asp to create server based web pages. There are more sophisticated way to to this in SAP but I like `bsp` because of its simplicity.
+
+Finally the `bsp` page will look like this (using [picocss](https://picocss.com))
+
+![AoC2024 Testpage](images/Screenshot%20From%202024-11-30%2011-19-13.png)
+
+#### Preparing the ICF (Internet Connection Server)
+To be able to use `bsp` you will have to prepare your freshly installed *miniSAP*. Go to the transacation `SICF` and activate all `bsp` related nodes. Either you read the [SAP Documentation](https://help.sap.com/doc/saphelp_snc700_ehp01/7.0.1/en-US/78/9852aec06b11d4ad310000e83539c3/frameset.htm) or you go on with try and error. The SAP error messages will guide you.
+
+#### The `bsp` coding
+
+see [abap/bsp/index.html](abap/bsp/index.html) and [abap/bsp/handler](abap/bsp/index.html.handlers.abap)
+
+The `bsp` creates an instance of a solution class. This instance has to implement the `ZIF_AOC` interface.
+
+see: [zif_AOC2024](abap/zif_aoc2024.abap)
+
+#### The base class
+
+It turns out, that there are some tasks as splitting the input into single lines, that will be needed in all puzzles. So I decided to implement them in a base class which is going to be the base for all puzzle implementation.
+
+see [abap/zcl_aoc2024_base.abap](abap/zclaoc2024_base)
+
+#### Puzzle implementation
+
+To implement a puzzle solution than I only have to subclass the `zclaoc2024_base` and implement the `resolve` method. `resolve` takes one input parameter `puzzleinput` of type `string` and returns `string` (via `result` return variable).
+
+see: [abap/zclaoc2024_template.abap](abap/zclaoc2024_template.abap)
+
+## Copyrights and Credits
++ [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
++ [JAVA](https://www.java.com/en/download/help/whatis_java.html)
++ [SAP NW ABAP Trial in Docker by Brandon Caulfield](https://github.com/brandoncaulfield/sap-nw-abap-trial-docker-windows).
++ [eclipse](www.eclipse.org)
++ [picocss](https://picocss.com) minimalistic `css` framework
++ [Advent of Code](https://adventofcode.com/2024)

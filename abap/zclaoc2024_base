@@ -1,0 +1,41 @@
+class zclaoc2024_base definition
+                      public
+                      abstract
+                      create public .
+
+public section.
+
+  interfaces zif_aoc2024 all methods abstract .
+
+  aliases resolve for zif_aoc2024~resolve .
+  protected section.
+    types:
+        tt_string type table of string with empty key.
+    methods:
+      split_into_lines importing s type string returning value(lines) type tt_string.
+  private section.
+
+endclass.
+
+
+
+class zclaoc2024_base implementation.
+
+  method split_into_lines.
+    " use a regular expression to split the input string
+    " into a table of strings
+    
+    find all occurrences of regex `([^\z\r\n\a]+)` in s in character mode
+        respecting case
+        results data(matches).
+    data(success) = sy-subrc.
+    if sy-subrc ne 0.
+        raise exception type cx_fatal_exception.
+    endif.
+    loop at matches assigning field-symbol(<line>).
+        append s+<line>-offset(<line>-length) to lines.
+    endloop.
+
+  endmethod.
+
+endclass.
