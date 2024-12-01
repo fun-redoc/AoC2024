@@ -73,7 +73,27 @@ see [abap/zcl_aoc2024_base.abap](abap/zclaoc2024_base)
 
 To implement a puzzle solution than I only have to subclass the `zclaoc2024_base` and implement the `resolve` method. `resolve` takes one input parameter `puzzleinput` of type `string` and returns `string` (via `result` return variable).
 
-see: [abap/zclaoc2024_template.abap](abap/zclaoc2024_template.abap)
+## Daily solutions
+
+### Day 1
+
+puzzle for [day1](https://adventofcode.com/2024/day/1)
+
+duration: `1:32h`
+
+percived difficulty: *easy*
+
+solution in : [abap/claoc2024_day1](abap/zclaoc2024_day1.abap)
+
+##### Observations:
+
++ the `find regexp` command in abap is very powerful. 
++ using sorted tables is kind of clumsy, i still miss arrays, but was it works none the less.
++ mixing old an new abap symtax is konfusing, the compiler is not very strong.
++ have to look up the `reduce` and `for` statements which I've found accidentally.
+
+
+
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
