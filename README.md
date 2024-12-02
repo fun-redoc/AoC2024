@@ -85,6 +85,8 @@ percived difficulty: *easy*
 
 solution in : [abap/claoc2024_day1](abap/zclaoc2024_day1.abap)
 
+screencast: [Screencast Day 1](https://youtu.be/PQB9Fog-QUo)
+
 ##### Observations:
 
 + the `find regexp` command in abap is very powerful. 
@@ -92,6 +94,25 @@ solution in : [abap/claoc2024_day1](abap/zclaoc2024_day1.abap)
 + mixing old an new abap symtax is konfusing, the compiler is not very strong.
 + have to look up the `reduce` and `for` statements which I've found accidentally.
 
+
+### Day 2
+
+puzzle for [day2](https://adventofcode.com/2024/day/2)
+
+duration Part 1: `1:25h`
+duration Part 2: `0:30h`
+
+percived difficulty: *easy*
+
+solution in : [abap/claoc2024_day2](abap/zclaoc2024_day2.abap)
+
+screencast: [Screencast Day 2](...) comming soon in 2 Parts.
+
+##### Observations:
+
++ the `for ...in...` command in abap is very powerful, reminds of the generators in python. The syntax is convoulted as usual in abap, loast lots of time reading and rereading the abap help. 
++ have to look up the `reduce` and `for` in more detail, seem very promissing.
++ the part 2 of the puzzle reuses parts of part 1, should think of it aready while writing part 1.
 
 
 
