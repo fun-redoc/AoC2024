@@ -126,10 +126,10 @@ perceived difficulty: *easy*
 
 solution in: [Solution Day 3](abap/zclaoc2004_day3.abap)
 
-# Obeservations:
+##### Observations:
 
-+ until now, good knowlege of regular expressions is very helpful,.., like in real live
-+ used the `reduce` statement. works very fine. abloute recommended if you want to calculate aggregations over tables (arrays).
++ until now, good knowlege of regular expressions is very helpful,.., like in real life
++ used the `reduce` statement. works very fine. strongly recommended if you want to calculate aggregations over tables (arrays).
 + don't need to split the input in lines when using regular expressions to parse :-)
 
 # Hope you liked the Day 3 in ABAP, bye, bye till next time and Happy Coding.
