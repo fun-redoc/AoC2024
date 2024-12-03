@@ -113,14 +113,14 @@ screencast: [Screencast Day 2 Part 1](https://youtu.be/drqAA8Wp69M)
 
 ##### Observations:
 
-+ the `for ...in...` command in abap is very powerful, reminds of the generators in python. The syntax is convoulted as usual in abap, lost lots of time reading and rereading the abap help. 
++ the `for ...in...` command in abap is very powerful, reminds of the generators in python in this solution it works just like `map`. The syntax is convoulted as usual in abap, lost lots of time reading and rereading the abap help. 
 + have to look up the `reduce` and `for` in more detail, seem very promissing.
 + the part 2 of the puzzle reuses parts of part 1, should think of it aready while writing part 1.
 
 ### Day 3
 
-duration part 1: 0:38
-duration part 2: 0:32
+duration part 1: `0:38`
+duration part 2: `0:32`
 
 perceived difficulty: *easy*
 
@@ -131,8 +131,6 @@ solution in: [Solution Day 3](abap/zclaoc2004_day3.abap)
 + until now, good knowlege of regular expressions is very helpful,.., like in real life
 + used the `reduce` statement. works very fine. strongly recommended if you want to calculate aggregations over tables (arrays).
 + don't need to split the input in lines when using regular expressions to parse :-)
-
-# Hope you liked the Day 3 in ABAP, bye, bye till next time and Happy Coding.
 
 
 ## Copyrights and Credits
