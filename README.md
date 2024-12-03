@@ -34,11 +34,11 @@ If you are using SAP you can't get past SAPGUI, especially transaktion SE80
 
 To be able to resolve a puzzle of AoC you need to be able to process the a puzzle input an put the result into the result filed of the respective puzzle.
 
-The puzzle input is an ascii text, consisting of multiple lines. The text may be really bit. AoC also provides some small test cases. 
+The puzzle input is an ascii text, consisting of multiple lines. The text may be really big. AoC also provides some small test cases. 
 
 Thus all you need is a method to upload the puzzles text as input to your solution code.
 
-I decided to create a litte frame work where i can use a browser to upload the solution.
+I decided to create a litte frame work where i can use a browser to upload the puzzle.
 
 ### Implementation of the Frameowrk
 
@@ -46,7 +46,7 @@ I decided to create a litte frame work where i can use a browser to upload the s
 
 To keep the things as simple as possible I'm going to write a simple [`bsp`](https://help.sap.com/doc/saphelp_snc700_ehp01/7.0.1/en-US/5a/f8b53a364e0e5fe10000000a11405a/content.htm?no_cache=true) Page.
 
-`bsp` (Business Service Pages) is a web technology from the 90'ties, just like jsp or asp to create server based web pages. There are more sophisticated way to to this in SAP but I like `bsp` because of its simplicity.
+`bsp` (Business Service Pages) is a web technology from the 90'ties, just like jsp or asp to create server based web pages. There are more sophisticated ways to to this in SAP but I like `bsp` because of its simplicity.
 
 Finally the `bsp` page will look like this (using [picocss](https://picocss.com))
 
@@ -71,7 +71,7 @@ see [abap/zcl_aoc2024_base.abap](abap/zclaoc2024_base)
 
 #### Puzzle implementation
 
-To implement a puzzle solution than I only have to subclass the `zclaoc2024_base` and implement the `resolve` method. `resolve` takes one input parameter `puzzleinput` of type `string` and returns `string` (via `result` return variable).
+To implement a puzzle solution I only have to subclass the `zclaoc2024_base` and implement the `resolve` method. `resolve` takes one input parameter `puzzleinput` of type `string` and returns `string` (via `result` return variable).
 
 ## Daily solutions
 
@@ -90,9 +90,9 @@ screencast: [Screencast Day 1](https://youtu.be/PQB9Fog-QUo)
 ##### Observations:
 
 + the `find regexp` command in abap is very powerful. 
-+ using sorted tables is kind of clumsy, i still miss arrays, but was it works none the less.
-+ mixing old an new abap symtax is konfusing, the compiler is not very strong.
-+ have to look up the `reduce` and `for` statements which I've found accidentally.
++ using sorted tables is kind of clumsy, i still miss arrays, but it works none the less.
++ mixing old an new abap syntax is confusing, the compiler is not very strong.
++ have to look up the `reduce` and `for` statements which I've found accidentally see [ABAP help](https://help.sap.com/doc/abapdocu_752_index_htm/7.52/en-US/abenconstructor_expression_reduce.htm)
 
 
 ### Day 2
@@ -106,14 +106,33 @@ percived difficulty: *easy*
 
 solution in : [abap/claoc2024_day2](abap/zclaoc2024_day2.abap)
 
-screencast: [Screencast Day 2](...) comming soon in 2 Parts.
+screencast: [Screencast Day 2 Part 1](https://youtu.be/drqAA8Wp69M)
+ [Part 2](https://youtu.be/gl_JdLxo2X4) 
+
+ Part 2 also consist of refactoring of Part 1 and fixing a problem with my testing web page.
 
 ##### Observations:
 
-+ the `for ...in...` command in abap is very powerful, reminds of the generators in python. The syntax is convoulted as usual in abap, loast lots of time reading and rereading the abap help. 
++ the `for ...in...` command in abap is very powerful, reminds of the generators in python. The syntax is convoulted as usual in abap, lost lots of time reading and rereading the abap help. 
 + have to look up the `reduce` and `for` in more detail, seem very promissing.
 + the part 2 of the puzzle reuses parts of part 1, should think of it aready while writing part 1.
 
+### Day 3
+
+duration part 1: 0:38
+duration part 2: 0:32
+
+perceived difficulty: *easy*
+
+solution in: [Solution Day 3](abap/zclaoc2004_day3.abap)
+
+# Obeservations:
+
++ until now, good knowlege of regular expressions is very helpful,.., like in real live
++ used the `reduce` statement. works very fine. abloute recommended if you want to calculate aggregations over tables (arrays).
++ don't need to split the input in lines when using regular expressions to parse :-)
+
+# Hope you liked the Day 3 in ABAP, bye, bye till next time and Happy Coding.
 
 
 ## Copyrights and Credits
