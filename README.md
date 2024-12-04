@@ -135,7 +135,7 @@ solution in: [Solution Day 3](abap/zclaoc2004_day3.abap)
 ### Day 4
 
 duration part 1: `2:40:00`
-duration part 2: ``
+duration part 2: `1:19:00`
 
 perceived difficulty: *easy*
 but only if I took the right appraoch from the beginning :-).
@@ -147,7 +147,13 @@ solution in:
 
 ##### Observations:
 
++ lost lots of time on a worng approach/idea
++ the approach I took than turned out really usefull for part 2
++ in part 1, i struggled with the 1-based arrays/tables of abap, had some one-off errors, but thanks to the debugger...
+3. in part 2 i struggled with the convoluted abap syntax, is there really no syntax variant for type `c length 1` like `c(1)`?
 
+
+# BYE BYE for today, see you tomorrow in the next christmas coding session, I wich you all a peaceful advent and a nice evening (GMT), happy coding.
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
