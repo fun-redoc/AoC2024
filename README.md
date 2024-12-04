@@ -132,6 +132,22 @@ solution in: [Solution Day 3](abap/zclaoc2004_day3.abap)
 + used the `reduce` statement. works very fine. strongly recommended if you want to calculate aggregations over tables (arrays).
 + don't need to split the input in lines when using regular expressions to parse :-)
 
+### Day 4
+
+duration part 1: `2:40:00`
+duration part 2: ``
+
+perceived difficulty: *easy*
+but only if I took the right appraoch from the beginning :-).
+
+solution in:
+[Implementation of a simple Matrix class](abap/zclaoc2024_day4_matrix.abap)
+[Solution Day 4 Part 1](abap/zclaoc2024_day4part1.abap)
+[Solution Day 4 Part 2](abap/zclaoc2024_day4part2.abap)
+
+##### Observations:
+
+
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
