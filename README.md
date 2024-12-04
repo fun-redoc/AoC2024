@@ -153,8 +153,6 @@ solution in:
 3. in part 2 i struggled with the convoluted abap syntax, is there really no syntax variant for type `c length 1` like `c(1)`?
 
 
-# BYE BYE for today, see you tomorrow in the next christmas coding session, I wich you all a peaceful advent and a nice evening (GMT), happy coding.
-
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
 + [JAVA](https://www.java.com/en/download/help/whatis_java.html)
