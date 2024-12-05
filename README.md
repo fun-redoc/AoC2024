@@ -155,11 +155,12 @@ solution in:
 ### Day 5
 
 duration part 1: `1:45:00`
-duration part 2: ``
+duration part 2: `2:20:00`
 
-perceived difficulty: *easy*
+perceived difficulty: *middle*
 
 nonetheless took me a lot of time....
+we I haven't the (bubble) sort association from the beginning?
 
 solution in:
 [Solution Day 5 Part 1](abap/zclaoc2024_day5part1.abap)
@@ -167,6 +168,10 @@ solution in:
 
 ##### Observations:
 + lost a bunch of time not knowing how my own `split_into_lines` method works
+
++ I again entered a wrong path following the first Idea I had. Maybe I should think more out of the box. in this case e.g. on order = sorting.
+
+# Thats it for today, I wish you a peaceful advent and happy coding.
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
