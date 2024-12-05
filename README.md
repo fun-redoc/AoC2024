@@ -152,6 +152,21 @@ solution in:
 + in part 1, i struggled with the 1-based arrays/tables of abap, had some one-off errors, but thanks to the debugger...
 3. in part 2 i struggled with the convoluted abap syntax, is there really no syntax variant for type `c length 1` like `c(1)`?
 
+### Day 5
+
+duration part 1: `1:45:00`
+duration part 2: ``
+
+perceived difficulty: *easy*
+
+nonetheless took me a lot of time....
+
+solution in:
+[Solution Day 5 Part 1](abap/zclaoc2024_day5part1.abap)
+[Solution Day 5 Part 2](abap/zclaoc2024_day5part2.abap)
+
+##### Observations:
++ lost a bunch of time not knowing how my own `split_into_lines` method works
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
