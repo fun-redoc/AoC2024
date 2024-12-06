@@ -171,8 +171,20 @@ solution in:
 
 + I again entered a wrong path following the first Idea I had. Maybe I should think more out of the box. in this case e.g. on order = sorting.
 
-# Thats it for today, I wish you a peaceful advent and happy coding.
+### Day 6
 
+duration part 1: `2:08:00`
+duration part 2: ``
+
+perceived difficulty: *easy*
+
+nonetheless took me a lot of time....
+
+solution in:
+[Solution Day 6 Part 1](abap/zclaoc2024_day6part1.abap)
+[Solution Day 6 Part 2](abap/zclaoc2024_day6part2.abap)
+
+##### Observations:
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
 + [JAVA](https://www.java.com/en/download/help/whatis_java.html)
