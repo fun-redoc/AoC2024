@@ -174,11 +174,35 @@ solution in:
 ### Day 6
 
 duration part 1: `2:08:00`
-duration part 2: ``
+duration part 2: `5:00:00` maybe even more
 
-perceived difficulty: *easy*
+perceived difficulty Part 1: *easy*
+perceived difficulty Part 2: *to hard*
 
 nonetheless took me a lot of time....
+
+I have not found the solution for part 2. 
+Found 1161 but its to low. I'will have to produce own testcases and trying to undestand better the differen cases.
+
+### Day 7
+
+duration part 1: `2:05:00` for the first failed solution
+duration part 2: `` maybe even more
+
+perceived difficulty Part 1: *middle*
+perceived difficulty Part 2: **
+
+
+##### Observations
++ backtracking solution feasible in ABAP but still with error
+
+# Bye Bye for now, stay coding.....
+
+solution in:
+[Solution Day 6 Part 1](abap/zclaoc2024_day6part1.abap)
+[Solution Day 6 Part 2](abap/zclaoc2024_day6part2.abap)
+
+# Bye Bye for now, stay coding.....
 
 solution in:
 [Solution Day 6 Part 1](abap/zclaoc2024_day6part1.abap)
