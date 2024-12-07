@@ -198,11 +198,9 @@ perceived difficulty Part 2: **
 + recursive decent / backtracking / breadth first solution feasible in ABAP, surprisingly good!
 + think simple, don't be tempted to build in premature optimizations without having completly understood the algorithm...
 
-# Bye Bye for now, stay coding.....
-
 solution in:
-[Solution Day 6 Part 1](abap/zclaoc2024_day6part1.abap)
-[Solution Day 6 Part 2](abap/zclaoc2024_day6part2.abap)
+[Solution Day 7 Part 1](abap/zclaoc2024_day7part1.abap)
+[Solution Day 7 Part 2](abap/zclaoc2024_day7part2.abap)
 
 # Bye Bye for now, stay coding.....
 
