@@ -191,16 +191,19 @@ duration part 1: additional `0:05:00` for the corrections.
 duration part 2: `` maybe even more
 
 perceived difficulty Part 1: *middle*
-perceived difficulty Part 2: **
+perceived difficulty Part 2: *easy*
 
 
 ##### Observations
 + recursive decent / backtracking / breadth first solution feasible in ABAP, surprisingly good!
 + think simple, don't be tempted to build in premature optimizations without having completly understood the algorithm...
++ Part 2 was unexpecantly simple. 
 
 solution in:
 [Solution Day 7 Part 1](abap/zclaoc2024_day7part1.abap)
 [Solution Day 7 Part 2](abap/zclaoc2024_day7part2.abap)
+
+
 
 # Bye Bye for now, stay coding.....
 
