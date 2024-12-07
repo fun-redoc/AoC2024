@@ -187,6 +187,7 @@ Found 1161 but its to low. I'will have to produce own testcases and trying to un
 ### Day 7
 
 duration part 1: `2:05:00` for the first failed solution
+duration part 1: additional `0:05:00` for the corrections.
 duration part 2: `` maybe even more
 
 perceived difficulty Part 1: *middle*
@@ -194,7 +195,8 @@ perceived difficulty Part 2: **
 
 
 ##### Observations
-+ backtracking solution feasible in ABAP but still with error
++ recursive decent / backtracking / breadth first solution feasible in ABAP, surprisingly good!
++ think simple, don't be tempted to build in premature optimizations without having completly understood the algorithm...
 
 # Bye Bye for now, stay coding.....
 
