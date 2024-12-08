@@ -204,6 +204,25 @@ solution in:
 [Solution Day 7 Part 2](abap/zclaoc2024_day7part2.abap)
 
 
+### Day 8
+
+duration part 1: `1:52:00` for the first failed solution
+duration part 1: additional `` for the corrections.
+duration part 2: `` maybe even more
+
+perceived difficulty Part 1: *middle*
+perceived difficulty Part 2: **
+
+
+##### Observations
+
+
+solution in:
+[Solution Day 7 Part 1](abap/zclaoc2024_day7part1.abap)
+[Solution Day 7 Part 2](abap/zclaoc2024_day7part2.abap)
+
+
+
 
 # Bye Bye for now, stay coding.....
 
