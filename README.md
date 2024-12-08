@@ -218,8 +218,8 @@ perceived difficulty Part 2: **
 
 
 solution in:
-[Solution Day 7 Part 1](abap/zclaoc2024_day7part1.abap)
-[Solution Day 7 Part 2](abap/zclaoc2024_day7part2.abap)
+[Solution Day 8 Part 1](abap/zclaoc2024_day8part1.abap)
+[Solution Day 8 Part 2](abap/zclaoc2024_day8part2.abap)
 
 
 
