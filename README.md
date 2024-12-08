@@ -184,6 +184,11 @@ nonetheless took me a lot of time....
 I have not found the solution for part 2. 
 Found 1161 but its to low. I'will have to produce own testcases and trying to undestand better the differen cases.
 
+solution in:
+[Solution Day 6 Part 1](abap/zclaoc2024_day6part1.abap)
+[Solution Day 6 Part 2](abap/zclaoc2024_day6part2.abap)
+
+
 ### Day 7
 
 duration part 1: `2:05:00` for the first failed solution
@@ -225,10 +230,6 @@ solution in:
 
 
 # Bye Bye for now, stay coding.....
-
-solution in:
-[Solution Day 6 Part 1](abap/zclaoc2024_day6part1.abap)
-[Solution Day 6 Part 2](abap/zclaoc2024_day6part2.abap)
 
 ##### Observations:
 ## Copyrights and Credits
