@@ -220,7 +220,8 @@ perceived difficulty Part 2: **
 
 
 ##### Observations
-
++ there was an errror in my base class in the regular expression for splitting the puzzle in lines. \z and \a don't mean end and beginning of line - stupid.
++ first time I had problems undestanding the puzzle text exactly. what unique in the exaple realy means is not obvious for me looking at the examples and the text.
 
 solution in:
 [Solution Day 8 Part 1](abap/zclaoc2024_day8part1.abap)
@@ -229,7 +230,7 @@ solution in:
 
 
 
-# Bye Bye for now, stay coding.....
+# Bye Bye for now, stay coding.....I'll be back for part 2
 
 ##### Observations:
 ## Copyrights and Credits
