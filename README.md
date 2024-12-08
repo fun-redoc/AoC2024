@@ -212,16 +212,18 @@ solution in:
 ### Day 8
 
 duration part 1: `1:52:00` for the first failed solution
-duration part 1: additional `` for the corrections.
-duration part 2: `` maybe even more
+duration part 1: additional `0:50:00` for the corrections.
+duration part 2: until docker restart ``
+duration part 2 after restart of docker: `0:16:00`
 
 perceived difficulty Part 1: *middle*
-perceived difficulty Part 2: **
+perceived difficulty Part 2: *easy*
 
 
 ##### Observations
 + there was an errror in my base class in the regular expression for splitting the puzzle in lines. \z and \a don't mean end and beginning of line - stupid.
 + first time I had problems undestanding the puzzle text exactly. what unique in the exaple realy means is not obvious for me looking at the examples and the text.
++ same like Part1, thera subletties in the description I didn't get on first read. Have to read more dilligently.
 
 solution in:
 [Solution Day 8 Part 1](abap/zclaoc2024_day8part1.abap)
@@ -229,10 +231,6 @@ solution in:
 
 
 
-
-# Bye Bye for now, stay coding.....I'll be back for part 2
-
-##### Observations:
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
 + [JAVA](https://www.java.com/en/download/help/whatis_java.html)
