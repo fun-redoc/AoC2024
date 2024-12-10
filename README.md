@@ -229,6 +229,19 @@ solution in:
 [Solution Day 8 Part 1](abap/zclaoc2024_day8part1.abap)
 [Solution Day 8 Part 2](abap/zclaoc2024_day8part2.abap)
 
+### Day 10
+
+duration part 1 and 2: `2:00:00` perceived difficulty Part 1: *middle*
+perceived difficulty Part 2: *easy*
+
+solution in:
+[Solution Day 10](abap/zclaoc2024_day10.abap)
+
+# Bye Bye for today, see you hopefully tomorrow. Have a peaceful advent and stay coding...
+
+##### Observations
++ another puzzle which could be solved using recursion (depth first) easily. nontheless respecting all the constraints is complex (for me).
+
 
 
 ## Copyrights and Credits
