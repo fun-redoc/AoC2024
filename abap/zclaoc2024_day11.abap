@@ -20,12 +20,11 @@ class zclaoc2024_day11 definition
             snd type int8,
         end of t_pair,
         begin of t_memo,
-            s type int8,
-            positions type i,
-            fst type int8,
-            snd type int8,
+            stone type int8,
+            blink type int8,
+            cnt type int8,
         end of t_memo,
-        tt_memo type hashed table of t_memo with unique key s.
+        tt_memo type hashed table of t_memo with unique key stone blink.
     data:
         xmemo type tt_memo.
 
@@ -37,7 +36,9 @@ class zclaoc2024_day11 definition
         split_in_half importing s type int8 returning value(pair) type t_pair,
         blink_stones importing stones type tt_stones returning value(after) type tt_stones,
         read_puzzle importing puzzleinput type string returning value(puzzle) type t_puzzle,
-        solve_part1 changing puzzle type t_puzzle.
+        solve_part1 changing puzzle type t_puzzle,
+        calc_stones_rec importing stone type int8 blink type int8 returning value(cnt) type int8,
+        solve_part2 importing puzzle type t_puzzle returning value(cnt) type int8.
 endclass.
 
 
@@ -94,7 +95,6 @@ class zclaoc2024_day11 implementation.
             add 1 to idx.
         enddo.
         " i (int type) skips leading 0 automatically
-        insert value t_memo( s = s positions = cnt fst = pair-fst snd = pair-snd ) into table me->xmemo .
     endmethod.
 
     method blink_stones.
@@ -108,20 +108,12 @@ class zclaoc2024_day11 implementation.
         loop at stones into data(s).
             if s eq 0.
                 append 1 to after.
+            elseif has_even_number_of_digits( s ) eq abap_true.
+                data(pair) = split_in_half( s ).
+                append pair-fst to after.
+                append pair-snd to after.
             else.
-                read table me->xmemo with key s = s assigning field-symbol(<memo>).
-                if <memo> is assigned.
-                    append <memo>-fst to after.
-                    append <memo>-snd to after.
-                else.
-                    if has_even_number_of_digits( s ) eq abap_true.
-                        data(pair) = split_in_half( s ).
-                        append pair-fst to after.
-                        append pair-snd to after.
-                    else.
-                        append s * 2024 to after.
-                    endif.
-                endif.
+                append s * 2024 to after.
             endif.
         endloop.
     endmethod.
@@ -141,11 +133,45 @@ class zclaoc2024_day11 implementation.
             res = res && `.` && s.
         endloop.
     endmethod.
+    method calc_stones_rec.
+        if blink eq 0.
+            cnt = 1.
+            exit.
+        endif.
+        read table xmemo with key stone = stone blink = blink assigning field-symbol(<memo>).
+        if <memo> is assigned.
+            cnt = <memo>-cnt.
+            exit.
+        else.
+            if stone eq 0.
+                cnt = calc_stones_rec( stone = 1 blink = blink - 1 ).
+            elseif has_even_number_of_digits( stone ) eq abap_true.
+                data(pair) = split_in_half( stone ).
+                cnt = calc_stones_rec( stone = pair-fst blink = blink - 1 ).
+                cnt = cnt + calc_stones_rec( stone = pair-snd blink = blink - 1 ).
+            else.
+                cnt = calc_stones_rec( stone = ( stone * 2024 ) blink = blink - 1 ).
+            endif.
+            insert value t_memo( stone = stone blink = blink cnt = cnt ) into table xmemo.
+            if sy-subrc ne 0.
+                raise exception type cx_fatal_exception.
+            endif.
+        endif.
+
+    endmethod.
+    method solve_part2.
+        cnt = conv int8( 0 ).
+        loop at puzzle-initial into data(stone).
+            cnt = cnt + calc_stones_rec( stone = stone blink = puzzle-blinks ).
+        endloop.
+    endmethod.
     method zif_aoc2024~resolve.
         data(puzzle) = read_puzzle( puzzleinput ).
-        solve_part1( changing puzzle = puzzle ).
-        data(result_part1) = lines( puzzle-final ).
-        "result = | Part 1: { result_part1 }  ---> { to_string( puzzle-final ) }|.
-        result = | Part 1: { result_part1 } |.
+        if puzzle-blinks le 25.
+            solve_part1( changing puzzle = puzzle ).
+        endif.
+        data(result_part1) = lines(  puzzle-final ).
+        data(result_part2) = solve_part2( exporting puzzle = puzzle ).
+        result = | Part 1: { result_part1 } Part 2: { result_part2 } |.
     endmethod.
 endclass.
