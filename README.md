@@ -260,7 +260,7 @@ duration part 1 and 2: `2:00:00` perceived difficulty Part 1: *middle*
 perceived difficulty Part 2: *middle*
 
 solution in:
-[Solution Day 10](abap/zclaoc2024_day10.abap)
+[Solution Day 10](abap/zclaoc2024_day11.abap)
 
 
 ##### Observations
@@ -268,7 +268,20 @@ solution in:
 + this time recursion is supported by memoizations
 + brute force using batch job on the solution of part 1 was not successcfull because the memory on my docker SAP System run out of space.
 
-# Bye Bye for now, stay peaceful, have a nice time...happy coding.
+### Day 12
+
+duration part 1 and 2: `3:00:00` perceived difficulty Part 1: *middle*
+perceived difficulty Part 2: **
+
+solution in:
+[Solution Day 10](abap/zclaoc2024_day12.abap)
+
+
+##### Observations
++ another puzzle which could be solved using recursion 
++ this time recursion is supported by memoizations
++ brute force using batch job on the solution of part 1 was not successcfull because the memory on my docker SAP System run out of space.
+
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
