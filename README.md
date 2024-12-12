@@ -229,6 +229,22 @@ solution in:
 [Solution Day 8 Part 1](abap/zclaoc2024_day8part1.abap)
 [Solution Day 8 Part 2](abap/zclaoc2024_day8part2.abap)
 
+### Day 09
+
+duration part 1: `1:00:00` <br/>
+duration part 2: `8:00:00` I've been struggeling with this.  
+
+perceived difficulty Part 1: *easy*
+perceived difficulty Part 2: *extra hard*
+
+solution in:
+[Solution Day 09](abap/zclaoc2024_day09.abap)
+
+##### Observations
++ the key to reslove this was an appropriate data structure.
++ i tried an implementation using doubly linked list in ABAP. Horror with APAB Pointer costed me lots of time until i gave in.
++ for me this was the hardest until now.
+
 ### Day 10
 
 duration part 1 and 2: `2:00:00` perceived difficulty Part 1: *middle*
