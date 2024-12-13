@@ -295,6 +295,7 @@ perceived difficulty Part 2: *easy* if you can see the obvious!
 
 solution in:
 [Solution Day 13 Part 1](abap/zclaoc2024_day13part1.abap)
+[Solution Day 13 Part 2](abap/zclaoc2024_day13part2.abap)
 
 ##### Observations
 + again, I haven't see the obvious in part 1.... write the task in a proper way so you see
