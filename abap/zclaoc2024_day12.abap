@@ -14,12 +14,14 @@ class zclaoc2024_day12 definition
             cnt_others type i, "count neighbours different kind
             cnt_same   type i, "count of neighbours same kind
             cnt_bounds type i, "count adjacent boudaries
+            region_idx type i, " index of the region I belong to
         end of t_patch,
         tt_areal type table of zclaoc2024_matrix=>t_v2 with empty key,
         begin of t_region,
             kind type char1,
             perimeter type i,
             area type i,
+            sides type i,
             areal type tt_areal,
         end of t_region,
         tt_regions type standard table of t_region with empty key,
@@ -31,6 +33,10 @@ class zclaoc2024_day12 definition
         down importing pos type zclaoc2024_matrix=>t_v2 returning value(res) type zclaoc2024_matrix=>t_v2,
         left importing pos type zclaoc2024_matrix=>t_v2 returning value(res) type zclaoc2024_matrix=>t_v2,
         right importing pos type zclaoc2024_matrix=>t_v2 returning value(res) type zclaoc2024_matrix=>t_v2,
+        above_kind importing pos type zclaoc2024_matrix=>t_v2 returning value(kind) type t_region-kind,
+        below_kind importing pos type  zclaoc2024_matrix=>t_v2 returning value(kind) type t_region-kind,
+        left_kind importing pos type  zclaoc2024_matrix=>t_v2 returning value(kind) type t_region-kind,
+        right_kind importing pos type  zclaoc2024_matrix=>t_v2 returning value(kind) type t_region-kind,
         ahead importing pos type zclaoc2024_matrix=>t_v2
                         dir type zclaoc2024_matrix=>t_v2
               returning value(res) type zclaoc2024_matrix=>t_v2,
@@ -39,7 +45,7 @@ class zclaoc2024_day12 definition
         count_neighbours,
         count_neighbours_by_v2 importing adjacent type zclaoc2024_matrix=>t_v2
                                 changing patch type t_patch ,
-        calc_area_and_perimeter changing region type t_region,
+        calc_area_and_perimeter importing region_idx type i changing region type t_region,
         walk_the_areal importing kind type char1
                                  pos type zclaoc2024_matrix=>t_v2
                                  dir type zclaoc2024_matrix=>t_v2
@@ -47,12 +53,159 @@ class zclaoc2024_day12 definition
                                  acc_areal type tt_areal
                        returning value(ok) type abap_bool,  "area accumulator
         determin_regions returning value(regions) type tt_regions,
+        determin_v_sides changing regions type tt_regions,
+        determin_h_sides changing regions type tt_regions,
+        determin_the_sides changing regions type tt_regions,
         read_map importing puzzleinput type string.
 endclass.
 
 
 
 class zclaoc2024_day12 implementation.
+    method above_kind.
+       field-symbols: <patch> type t_patch.
+       clear kind.
+       data(above_pos) = up( pos ).
+       if map->check_in_bounds( above_pos ) eq abap_true.
+            data(patch_r) = map->get_by_v2( above_pos ).
+            assign patch_r->* to <patch>.
+           kind = <patch>-kind.
+       endif.
+    endmethod.
+    method below_kind.
+       field-symbols: <patch> type t_patch.
+       clear kind.
+       data(below_pos) = down( pos ).
+       if map->check_in_bounds( below_pos ) eq abap_true.
+            data(patch_r) = map->get_by_v2( below_pos ).
+            assign patch_r->* to <patch>.
+           kind = <patch>-kind.
+       endif.
+    endmethod.
+    method left_kind.
+       field-symbols: <patch> type t_patch.
+       clear kind.
+       data(left_pos) = left( pos ).
+       if map->check_in_bounds( left_pos ) eq abap_true.
+            data(patch_r) = map->get_by_v2( left_pos ).
+            assign patch_r->* to <patch>.
+           kind = <patch>-kind.
+       endif.
+    endmethod.
+    method right_kind.
+       field-symbols: <patch> type t_patch.
+       clear kind.
+       data(right_pos) = right( pos ).  " TODO get rid of those copy paste , to do that redesign up/down/left/right...methods
+       if map->check_in_bounds( right_pos ) eq abap_true.
+            data(patch_r) = map->get_by_v2( right_pos ).
+            assign patch_r->* to <patch>.
+           kind = <patch>-kind.
+       endif.
+    endmethod.
+    method determin_v_sides.
+        field-symbols: <patch> type t_patch.
+        data prev_kind type t_patch-kind.
+        data prev_above type t_patch-kind.
+        data prev_below type t_patch-kind.
+        do map->rows times.
+            data(y) = sy-index.
+            clear prev_kind.
+            clear prev_above.
+            clear prev_below.
+            do map->cols times.
+                data(x) = sy-index.
+                "
+                data(pos) = value zclaoc2024_matrix=>t_v2( x = x y = y ).
+                data(patch_r) = map->get_by_v2(  pos ).
+                assign patch_r->* to <patch>.
+                data(cur_kind) = <patch>-kind.
+                data(above_kind) = above_kind( pos ).
+                data(below_kind) = below_kind( pos ).
+
+                if cur_kind ne prev_kind.
+                    " the plant changes => a new side starts.
+                    data(region_idx) = <patch>-region_idx. " yes!
+                    data(region_r) = ref #( regions[ region_idx ] ).
+                    " a side beginns only if above or below different kinds of plants are...
+
+                    if above_kind ne cur_kind.
+                        " one side above starts
+                        add 1 to region_r->*-sides.
+                    endif.
+                    if below_kind ne cur_kind.
+                        " one side below starts
+                        add 1 to region_r->*-sides.
+                    endif.
+                else. " case C at (4,3)
+                    if prev_above eq cur_kind and above_kind ne cur_kind. " not so clear...
+                        add 1 to region_r->*-sides.
+                    endif.
+                    if prev_below eq cur_kind and below_kind ne cur_kind. " not so clear...
+                        add 1 to region_r->*-sides.
+                    endif.
+                endif.
+
+                prev_kind = cur_kind.
+                prev_above = above_kind.
+                prev_below = below_kind.
+                "
+            enddo.
+        enddo.
+    endmethod.
+    method determin_h_sides.
+        field-symbols: <patch> type t_patch.
+        data prev_kind type t_patch-kind.
+        data prev_left type t_patch-kind.
+        data prev_right type t_patch-kind.
+        do map->cols times. " flip cols/rows to traverse horizontally.. TODO refactor copy paste
+            data(x) = sy-index.
+            clear prev_kind.
+            clear prev_left.
+            clear prev_right.
+            do map->rows times.
+                data(y) = sy-index.
+                "
+                data(pos) = value zclaoc2024_matrix=>t_v2( x = x y = y ).
+                data(patch_r) = map->get_by_v2(  pos ).
+                assign patch_r->* to <patch>.
+                data(cur_kind) = <patch>-kind.
+                data(left_kind) = left_kind( pos ).
+                data(right_kind) = right_kind( pos ).
+
+                if cur_kind ne prev_kind.
+                    " the plant changes => a new side starts.
+                    data(region_idx) = <patch>-region_idx. " yes!
+                    data(region_r) = ref #( regions[ region_idx ] ).
+                    " a side beginns only if left or right different kinds of plants are...
+
+                    if left_kind ne cur_kind.
+                        " one side left starts
+                        add 1 to region_r->*-sides.
+                    endif.
+                    if right_kind ne cur_kind.
+                        " one side right starts
+                        add 1 to region_r->*-sides.
+                    endif.
+                else. " case C at (4,3)
+                    if prev_left eq cur_kind and left_kind ne cur_kind. " not so clear...
+                        add 1 to region_r->*-sides.
+                    endif.
+                    if prev_right eq cur_kind and right_kind ne cur_kind. " not so clear...
+                        add 1 to region_r->*-sides.
+                    endif.
+                endif.
+
+                prev_kind = cur_kind.
+                prev_left = left_kind.
+                prev_right = right_kind.
+                "
+            enddo.
+        enddo.
+    endmethod.
+    method determin_the_sides.
+        determin_v_sides( changing regions = regions ).
+        determin_h_sides( changing regions = regions ).
+    endmethod.
     method ahead.
         res = value #( x = pos-x + dir-x y = pos-y + dir-y ).
     endmethod.
@@ -113,6 +266,7 @@ class zclaoc2024_day12 implementation.
         add 1 to region-area .
         add <patch>-cnt_bounds to region-perimeter .
         add <patch>-cnt_others to region-perimeter .
+        <patch>-region_idx = region_idx.
        endloop.
     endmethod.
     method determin_regions.
@@ -136,7 +290,7 @@ class zclaoc2024_day12 implementation.
                     walk_the_areal( exporting kind = kind  pos = pos dir = value #( x = 1 y = 0 )
                                     changing trace = trace acc_areal = areal ).
                     append value t_region( kind = kind areal = areal ) to regions assigning field-symbol(<region>).
-                    calc_area_and_perimeter( changing region = <region> ).
+                    calc_area_and_perimeter( exporting region_idx = lines( regions ) changing region = <region> ).
 
                 endif.
                 "
@@ -228,9 +382,23 @@ class zclaoc2024_day12 implementation.
 
         data(regions) = determin_regions( ). " regions are plots of same kind beeing adjacent.
 
-        data(cost) = reduce i( init acc = 0 for r in regions next  acc = acc + r-perimeter * r-area  ).
+        data(cost_part1) = reduce i( init acc = 0 for r in regions next  acc = acc + r-perimeter * r-area  ).
 
-        result = | Part 1: { cost }|.
+        " Welcome to Part 2 of Day 12, this task is tricky..
+        " i can imagin two approaches
+        " 1. start with any point, move towords the bound of the region,
+        "    walk the bound (fence) along, every change of direction means a new side...
+        "    => similarly to the method walk_the_area
+        " 2. traverse row wise then col wise.
+        "    every change above or below ( left or right) resp. means the beginning of a new side
+        "
+        " I think I'm going for 2, seems easier to me, still--
+
+        determin_the_sides( changing regions = regions ) .
+        data(cost_part2) = reduce i( init acc = 0 for r in regions next  acc = acc + r-sides * r-area  ).
+
+
+        result = | Part 1: { cost_part1 } Part 2: { cost_part2 }|.
 
     endmethod.
 endclass.

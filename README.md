@@ -270,17 +270,24 @@ solution in:
 
 ### Day 12
 
-duration part 1 and 2: `3:00:00` perceived difficulty Part 1: *middle*
-perceived difficulty Part 2: **
+duration part 1: `3:00:00`
+duration part 2: `1:04:00`
+perceived difficulty Part 1: *middle*
+perceived difficulty Part 2: *complex*
 
 solution in:
 [Solution Day 10](abap/zclaoc2024_day12.abap)
 
+# See you later in Part 2 of Day 12...have a nice evening (GMT+1)
 
 ##### Observations
-+ another puzzle which could be solved using recursion 
-+ this time recursion is supported by memoizations
-+ brute force using batch job on the solution of part 1 was not successcfull because the memory on my docker SAP System run out of space.
++ another puzzle which could be solved using recursion (walk_the_area method for Part 1)
++ I struggle sometimes with ABAPs verbousity, the code is really long.
++ I had done one mistake on the beginning, defining up/down/left/right function to access the respective patches...this let to lots of copy paste...should have refactored earlier
++ Part 2 Altgorithm I chose, turned out more complicated I expected, walking around may have been easiere.
+
+# Good night (GMT+1) by now, have a peaceful advent and see you coding some another advent of code quest...bye bye...
+
 
 
 ## Copyrights and Credits
