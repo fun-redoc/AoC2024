@@ -260,7 +260,7 @@ duration part 1 and 2: `2:00:00` perceived difficulty Part 1: *middle*
 perceived difficulty Part 2: *middle*
 
 solution in:
-[Solution Day 10](abap/zclaoc2024_day11.abap)
+[Solution Day 11](abap/zclaoc2024_day11.abap)
 
 
 ##### Observations
@@ -276,7 +276,7 @@ perceived difficulty Part 1: *middle*
 perceived difficulty Part 2: *complex*
 
 solution in:
-[Solution Day 10](abap/zclaoc2024_day12.abap)
+[Solution Day 12](abap/zclaoc2024_day12.abap)
 
 # See you later in Part 2 of Day 12...have a nice evening (GMT+1)
 
@@ -286,8 +286,22 @@ solution in:
 + I had done one mistake on the beginning, defining up/down/left/right function to access the respective patches...this let to lots of copy paste...should have refactored earlier
 + Part 2 Altgorithm I chose, turned out more complicated I expected, walking around may have been easiere.
 
-# Good night (GMT+1) by now, have a peaceful advent and see you coding some another advent of code quest...bye bye...
+### Day 13
 
+duration part 1: `1:10:00`
+duration part 2: `1:20:00`
+perceived difficulty Part 1: *easy* with brute force
+perceived difficulty Part 2: *easy* if you can see the obvious!
+
+solution in:
+[Solution Day 13 Part 1](abap/zclaoc2024_day13part1.abap)
+
+##### Observations
++ again, I haven't see the obvious in part 1.... write the task in a proper way so you see
++ some math (linear algebra in this case) saves a lot of code and CPU
++ I should repeat how to solve linear equations.
+
+# Bye Bye for now, have a good night (GMT+1) and have a peaceful advent, see you maybe in the tommorow coding session...
 
 
 ## Copyrights and Credits
