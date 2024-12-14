@@ -302,6 +302,22 @@ solution in:
 + some math (linear algebra in this case) saves a lot of code and CPU
 + I should repeat how to solve linear equations.
 
+### Day 14
+
+duration part 1: `2:10:00`
+duration part 2: ``
+perceived difficulty Part 1: *easy* 
+perceived difficulty Part 2: *seems to get complex* 
+
+solution in:
+[Solution Day 14 Part 1](abap/zclaoc2024_day14part1.abap)
+[Solution Day 14 Part 2](abap/zclaoc2024_day14part2.abap)
+
+##### Observations
++ again, I haven't see the obvious in part 1.... write the task in a proper way so you see
++ some math (linear algebra in this case) saves a lot of code and CPU
++ I should repeat how to solve linear equations.
+
 # Bye Bye for now, have a good night (GMT+1) and have a peaceful advent, see you maybe in the tommorow coding session...
 
 
