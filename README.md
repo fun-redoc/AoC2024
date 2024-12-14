@@ -305,18 +305,20 @@ solution in:
 ### Day 14
 
 duration part 1: `2:10:00`
-duration part 2: ``
+duration part 2: `1:47:00`
 perceived difficulty Part 1: *easy* 
-perceived difficulty Part 2: *seems to get complex* 
+perceived difficulty Part 2: *middle* 
 
 solution in:
 [Solution Day 14 Part 1](abap/zclaoc2024_day14part1.abap)
 [Solution Day 14 Part 2](abap/zclaoc2024_day14part2.abap)
+[Christmas Tree](christmas_tree.txt)
 
 ##### Observations
 + again, I haven't see the obvious in part 1.... write the task in a proper way so you see
 + some math (linear algebra in this case) saves a lot of code and CPU
 + I should repeat how to solve linear equations.
++ I couldn't reuse the *smart* solution from Part1. Back to Brute Force. Didn't like Part 2 event the resultig christmas tree was beautiful.
 
 # Bye Bye for now, have a good night (GMT+1) and have a peaceful advent, see you maybe in the tommorow coding session...
 
