@@ -320,7 +320,24 @@ solution in:
 + I should repeat how to solve linear equations.
 + I couldn't reuse the *smart* solution from Part1. Back to Brute Force. Didn't like Part 2 event the resultig christmas tree was beautiful.
 
-# Bye Bye for now, have a good night (GMT+1) and have a peaceful advent, see you maybe in the tommorow coding session...
+### Day 15
+
+duration part 1: `3:20:00` roughly
+duration part 2: ``
+perceived difficulty Part 1: *easy* 
+perceived difficulty Part 2: *complex* 
+
+solution in:
+[Solution Day 15 Part 1](abap/zclaoc2024_day15part1.abap)
+[Solution Day 15 Part 2](abap/zclaoc2024_day15part2.abap)
+
+##### Observations
++ it takes time in ABAP, maybe I'm not so fast....
++ this part remainded me of an old crate pushing game (I once implemented in haskell: https://github.com/fun-redoc/sokobal-revisited-no-frp.git)
++ again massive recursive algorithm....its getting complicated
+
+
+# Bye Bye for now, have a nice sunday night (GMT+1) and have a peaceful advent, see you maybe in the tomorow coding session...
 
 
 ## Copyrights and Credits
