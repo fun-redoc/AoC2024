@@ -336,8 +336,35 @@ solution in:
 + this part remainded me of an old crate pushing game (I once implemented in haskell: https://github.com/fun-redoc/sokobal-revisited-no-frp.git)
 + again massive recursive algorithm....its getting complicated
 
+### Day 16
 
-# Bye Bye for now, have a nice sunday night (GMT+1) and have a peaceful advent, see you maybe in the tomorow coding session...
+I had to skip, will try it when I have time maybe after christmas.
+
+
+##### Observations
++ it takes time in ABAP, maybe I'm not so fast....
++ this part remainded me of an old crate pushing game (I once implemented in haskell: https://github.com/fun-redoc/sokobal-revisited-no-frp.git)
++ again massive recursive algorithm....its getting complicated
+
+
+### Day 17
+
+duration part 1: `2:20:00` roughly
+duration part 2: ``
+perceived difficulty Part 1: *easy* 
+perceived difficulty Part 2: ** 
+
+solution in:
+[Solution Day 17 Part 1](abap/zclaoc2024_day17part1.abap)
+[Solution Day 17 Part 2](abap/zclaoc2024_day17part2.abap)
+
+##### Observations
++ it takes time in ABAP, maybe I'm not so fast....
++ one off errors...
++ I start to like the `reduce` operation in `ABAP`.
+
+
+# Bye Bye for now, have a nice evening (GMT+1) and have a peaceful advent, see you maybe for part 2 tonight...
 
 
 ## Copyrights and Credits
