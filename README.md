@@ -362,9 +362,28 @@ solution in:
 + it takes time in ABAP, maybe I'm not so fast....
 + one off errors...
 + I start to like the `reduce` operation in `ABAP`.
++ Part2 : I have no clue.
+
+### Day 18
+
+duration part 1: `4:30:00` roughly
+duration part 2: ``
+perceived difficulty Part 1: *middle* 
+perceived difficulty Part 2: *easy* if you resolved Part 1 with an efficinet algorithm 
+
+solution in:
+[Solution Day 17 Part 1](abap/zclaoc2024_day17part1.abap)
+[Solution Day 17 Part 2](abap/zclaoc2024_day17part2.abap)
+
+##### Observations
++ the algorithm of choice is A*
++ the implementation in ABAP was not that hard I thought. the sorted table, hashed table etc. data types help a lot
++ i made some "bonckers" errors implementing the priority queue...
++ ABAP is missing generics.
 
 
-# Bye Bye for now, have a nice evening (GMT+1) and have a peaceful advent, see you maybe for part 2 tonight...
+
+# Bye Bye for now, have a goor night (GMT+1) and have a peaceful advent, see you maybe tomorrow for day 19...
 
 
 ## Copyrights and Credits
