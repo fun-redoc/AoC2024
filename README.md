@@ -372,8 +372,7 @@ perceived difficulty Part 1: *middle*
 perceived difficulty Part 2: *easy* if you resolved Part 1 with an efficinet algorithm 
 
 solution in:
-[Solution Day 17 Part 1](abap/zclaoc2024_day17part1.abap)
-[Solution Day 17 Part 2](abap/zclaoc2024_day17part2.abap)
+[Solution Day 18 Part 1&2](abap/zclaoc2024_day18.abap)
 
 ##### Observations
 + the algorithm of choice is A*
@@ -381,9 +380,22 @@ solution in:
 + i made some "bonckers" errors implementing the priority queue...
 + ABAP is missing generics.
 
+### Day 19
+
+duration part 1: `2:30:00` roughly
+duration part 2: `1:30:00`
+perceived difficulty Part 1: *ok* 
+perceived difficulty Part 2: *struggeled* 
+
+solution in:
+[Solution Day 19 Part 1&2](abap/zclaoc2024_day19.abap)
+
+##### Observations
++ the algorithm of choice is backtracking (BFS) supported by momoization 
++ roughly fir into th biggest number SAP proives
++ using fieldymbols and only chekcing for assignment can leed to time consuming errors
 
 
-# Bye Bye for now, have a goor night (GMT+1) and have a peaceful advent, see you maybe tomorrow for day 19...
 
 
 ## Copyrights and Credits
