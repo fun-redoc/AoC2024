@@ -396,7 +396,18 @@ solution in:
 + using fieldymbols and only chekcing for assignment can leed to time consuming errors
 
 
+### Day 23
 
+duration part 1: `2:00:00` roughly
+duration part 2: ``
+perceived difficulty Part 1: *ok* 
+perceived difficulty Part 2: ** 
+
+solution in:
+[Solution Day 23 Part 1&2](abap/zclaoc2024_day23.abap)
+
+##### Observations
++ another variant of BFS 
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
