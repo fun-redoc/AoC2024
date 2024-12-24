@@ -398,16 +398,19 @@ solution in:
 
 ### Day 23
 
-duration part 1: `2:00:00` roughly
-duration part 2: ``
+duration part 1: `3:20:00` roughly
+duration part 2: `2:10:00` but not ready yet
 perceived difficulty Part 1: *ok* 
-perceived difficulty Part 2: ** 
+perceived difficulty Part 2: *tricky* 
 
 solution in:
 [Solution Day 23 Part 1&2](abap/zclaoc2024_day23.abap)
 
 ##### Observations
 + another variant of BFS 
++ hard to write a fast algorithm
+
+# Bye Bye for now, have a wonderful christmas 
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
