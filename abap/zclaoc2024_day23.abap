@@ -24,22 +24,12 @@ class zclaoc2024_day23 definition
           t_three_group type sorted table of t_node with unique key table_line,
           tt_intercon_group type sorted table of t_node with unique key table_line,
           tt_three_groups type hashed table of t_three_group_repr with unique key table_line,
+          tt_clique type hashed table of t_node with unique key table_line
+          .
 
-          "Part2 Data Structures
-          begin of t_nodes_three_groups,
-            node type t_node,
-            grps type tt_three_groups,
-          end of t_nodes_three_groups,
-          tt_nodes_three_groups type hashed table of t_nodes_three_groups with unique key node,
-
-          begin of t_queue_intercon,
-            grp type t_three_group_repr,
-            linked type ref to data,
-          end of t_queue_intercon.
       data:
           graph type tt_graph,
-          three_groups type tt_three_groups,
-          nodes_three_groups type tt_nodes_three_groups.
+          three_groups type tt_three_groups.
       methods:
         dump_three_groups returning value(string_repr) type string,
         dump_graph returning value(string_repr) type string,
@@ -49,17 +39,7 @@ class zclaoc2024_day23 definition
         insert_into_graph importing from_node type t_node
                                       to_node type t_node,
         read_puzzle importing puzzleinput type string,
-        find_interconnected_groups returning value(max_intercon_group) type tt_intercon_group,
-        check_have_two_common importing grp1 type t_three_group_repr
-                                        grp2 type t_three_group_repr
-                              changing common1 type t_node
-                                       common2 type t_node
-                                       other_of_grp2 type t_node
-                             returning value(res) type abap_bool,
-        check_has_connection_to_all importing grp type t_three_group_repr
-                                              node type t_node
-                                    returning value(res) type abap_bool,
-        build_nodes_three_groups,
+        max_clique returning value(max_clique) type tt_clique,
         find_3_groups.
 endclass.
 
@@ -67,143 +47,35 @@ endclass.
 
 class zclaoc2024_day23 implementation.
 
-    method build_nodes_three_groups.
+    method max_clique.
+        clear max_clique.
+        data some_clique type tt_clique.
+
         loop at three_groups assigning field-symbol(<grp>).
-            do 3 times.
-                data(off) = 2 * ( sy-index - 1 ).
-                data(nd) = <grp>+off(2).
-                read table nodes_three_groups with key node = nd assigning field-symbol(<ntg>).
-                if sy-subrc eq 0.
-                    insert <grp> into table <ntg>-grps.
-                else.
-                    insert value #( node = nd ) into table nodes_three_groups assigning <ntg>.
-                    insert <grp> into  table <ntg>-grps.
-                endif.
-            enddo.
-        endloop.
-    endmethod.
-
-    method check_have_two_common.
-        " assumption grp1 and grp2 have a sorted representation
-        " checking cases  xx., x.x, .xx
-        data g11 type t_node.
-        data g12 type t_node.
-        data g13 type t_node.
-        data g21 type t_node.
-        data g22 type t_node.
-        data g23 type t_node.
-        g11 = grp1+0(2). g12 = grp1+2(2). g13 = grp1+4(2).
-        g21 = grp2+0(2). g22 = grp2+2(2). g23 = grp2+4(2).
-        if g11 eq g21 and g12 eq g22.
-            common1 = g11.
-            common2 = g12.
-            other_of_grp2 = g23.
-            res = abap_true.
-            exit.
-        endif.
-        if g11 eq g21 and g13 eq g23.
-            common1 = g11.
-            common2 = g13.
-            other_of_grp2 = g22.
-            res = abap_true.
-            exit.
-        endif.
-        if g12 eq g22 and g13 eq g23.
-            common1 = g12.
-            common2 = g13.
-            other_of_grp2 = g21.
-            res = abap_true.
-            exit.
-        endif.
-        res = abap_false.
-    endmethod.
-
-    method check_has_connection_to_all.
-        data grp_nd type t_node.
-        read table graph with key node = node assigning field-symbol(<adjacence>).
-        if sy-subrc ne 0.
-            raise exception type cx_fatal_exception.
-        endif.
-        res = abap_true.
-        do 3 times.
-            data(i) = sy-index - 1.
-            data(off) = i * 2.
-            grp_nd = grp+off(2).
-            read table <adjacence>-neighbours with key table_line = grp_nd transporting no fields.
-            if sy-subrc ne 0.
-                res = abap_false.
-                exit.
-            endif.
-        enddo.
-    endmethod.
-
-    method find_interconnected_groups.
-        " IDEA
-        " successivielly add 3-groups
-        " two 3 groups can be joined iff they have 2 elements in common and the third is conneted to all other
-        data queue type table of t_queue_intercon with empty key.
-        data finished type hashed table of t_queue_intercon with unique key grp.
-        data r_qintercon type ref to t_queue_intercon.
-        field-symbols <qintercom> type t_queue_intercon.
-        data: c1 type t_node, c2 type t_node, c3 type t_node, other type t_node.
-        data intercon type tt_intercon_group.
-        loop at three_groups assigning field-symbol(<grp>).
-            clear queue.
-            clear finished.
-            append value #(  grp = <grp> ) to queue.
-
-            while lines(  queue ) > 0.
-
-                data(cur) = queue[ 1 ].
-                delete queue index 1.
-
-                insert cur into table finished.
-
-                " now I need to find all 3-groups with 3 nodes in common with cur and a connection to the remaining one
-                "  i'm going to loop, if it turns out too slow, i'll improve later
-                do 3 times.
-                    data(off) = 2 * ( sy-index - 1 ).
-                    data(nd) = cur-grp+off(2).
-                    read table nodes_three_groups with key node = nd assigning field-symbol(<ntg>).
-                    if sy-subrc eq 0.
-                        loop at <ntg>-grps assigning field-symbol(<adj>).
-                            read table finished with key grp = <adj> transporting no fields.
-                            if sy-subrc ne 0.
-                                if <adj> ne cur-grp.
-                                    if check_have_two_common( exporting grp1 = cur-grp grp2 = <adj> changing common1 = c1 common2 = c1 other_of_grp2 = other ).
-                                        if check_has_connection_to_all( grp = cur-grp node = other ).
-                                            " can be worked on, belongs to the group
-                                            create data r_qintercon.
-                                            r_qintercon->* = cur.
-                                            append value #( grp = <adj> linked = r_qintercon  ) to queue.
-                                        endif.
-                                    endif.
-                               endif.
-                            endif.
-                        endloop.
+            insert <grp>+0(2) into table some_clique.
+            insert <grp>+2(2) into table some_clique.
+            insert <grp>+4(2) into table some_clique.
+            loop at graph assigning field-symbol(<v>).
+                data(connects_to_all) = abap_true.
+                loop at some_clique assigning field-symbol(<w>).
+                    read table <v>-neighbours with key table_line = <w> transporting no fields.
+                    if sy-subrc ne 0.
+                        connects_to_all = abap_false.
+                        exit.
                     endif.
-                enddo.
-
-            endwhile.
-
-            " unwind the linked list to node group
-            clear intercon.
-            data r type ref to data.
-            r = ref #( cur ).
-            while r is bound.
-                assign r->* to <qintercom>.
-                insert <qintercom>-grp+0(2) into table intercon.
-                insert <qintercom>-grp+2(2) into table intercon.
-                insert <qintercom>-grp+4(2) into table intercon.
-                r = <qintercom>-linked .
-            endwhile.
-            if lines( intercon ) > lines( max_intercon_group ).
-                max_intercon_group = intercon.
-                " TODO can there be several with max_size, and if yes what to do?
+                endloop.
+                if connects_to_all eq abap_true.
+                    insert <v>-node into table some_clique.
+                endif.
+            endloop.
+            if lines( max_clique ) < lines(  some_clique ).
+                max_clique = some_clique.
             endif.
-
+            clear some_clique.
         endloop.
+
     endmethod.
+
 
     method check_is_loop.
         " loop is if top and bottom element of this linked list are same
@@ -371,21 +243,17 @@ class zclaoc2024_day23 implementation.
                                         next cnt_t =  cond i( when contains( val = wa regex = `t\w{5}|\w{2}t\w{3}|\w{4}t\w` )  then cnt_t + 1 else cnt_t )
                                      ).
 
-        " Part 2
-        build_nodes_three_groups( ).
 
+        " welcom to my next retry for day 23 part 2....
+        " after some thinking I found a hint at wikipedia - finding some maximal clique seems easy as an algorithm
+        " https://en.wikipedia.org/wiki/Clique_problem
 
-        data(max_intercon_group) = find_interconnected_groups(  ).
-        data(result_part2) = reduce string( init s = `` for g in max_intercon_group next s = s && g && `,` ).
+        data(max_clique) = max_clique(  ).
+
+        sort max_clique.
+
+        data(result_part2) = reduce string( init s = `` for c in max_clique next s = s && c && `,` ).
         result_part2 = substring( val = result_part2 off = 0 len = strlen( result_part2 ) - 1 ).
-
-        " since the computation takes more than the web timeout and I have no immidiate idea
-        " how wo accelerate, i've sent the progam top background processing
-        " will come in an hour or so to look after it....
-        " bye bye until then ...
-        " have a wonderful christmas time and keep coding.
-
-
 
         result = |Part 1: { result_part1 } Part 2: { result_part2 } \n{ three_groups_dump }\n { graph_dump } |.
     endmethod.

@@ -415,14 +415,17 @@ solution in:
 ### Day 23
 
 duration part 1: `1:30:00` roughly
-duration part 2: `` 
+duration part 2: `lots of time thinking into wrong directions` 
 perceived difficulty Part 1: *ok* 
-perceived difficulty Part 2: ???
+perceived difficulty Part 2: *easy* after finding the wikipedia clue
 
 solution in:
 [Solution Day 25 Part 1&2](abap/zclaoc2024_day23.abap)
 
-# Bye Bye for now, have a wonderful christmas 
+##### Observations
++ really interesing one
++ part 2 I needed a hint from wikipedia, what i worked on primnary was a try to find all max cliques what seems to be an unsolved problem...
++ this recording was a rerecording, i already solved the puzzle in python - which I like when tinkering around.
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company
