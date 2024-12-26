@@ -278,8 +278,6 @@ perceived difficulty Part 2: *complex*
 solution in:
 [Solution Day 12](abap/zclaoc2024_day12.abap)
 
-# See you later in Part 2 of Day 12...have a nice evening (GMT+1)
-
 ##### Observations
 + another puzzle which could be solved using recursion (walk_the_area method for Part 1)
 + I struggle sometimes with ABAPs verbousity, the code is really long.
@@ -364,6 +362,7 @@ solution in:
 + I start to like the `reduce` operation in `ABAP`.
 + Part2 : took me some thinikng about and some experimentation in python, the main observation was, that the pattern repeats by mod 8 / div 8 and that one can reuse the results from rear to front. my first try the other way failed. A solution with a DP-tableau is really fine, havent done something alike since university... long time ago.
 
+
 ### Day 18
 
 duration part 1: `4:30:00` roughly
@@ -399,9 +398,9 @@ solution in:
 ### Day 23
 
 duration part 1: `3:20:00` roughly
-duration part 2: `2:10:00` but not ready yet
+duration part 2: `` working on this starts today night....
 perceived difficulty Part 1: *ok* 
-perceived difficulty Part 2: *tricky* failed to resolve this Part
+perceived difficulty Part 2: *tricky* 
 
 solution in:
 [Solution Day 23 Part 1&2](abap/zclaoc2024_day23.abap)
@@ -409,7 +408,19 @@ solution in:
 ##### Observations
 + another variant of BFS 
 + hard to write a fast algorithm
-+ for solution one would need a algorithm to find strongly connected graph components...like here: https://en.wikipedia.org/wiki/Strongly_connected_component
++ findig maximal clique algorithm 
++ 2 failed attempts...i've been probably thinking to complicated, but one look in wikipedia should have been helping: https://en.wikipedia.org/wiki/Clique_problem
+
+
+### Day 23
+
+duration part 1: `1:30:00` roughly
+duration part 2: `` 
+perceived difficulty Part 1: *ok* 
+perceived difficulty Part 2: ???
+
+solution in:
+[Solution Day 25 Part 1&2](abap/zclaoc2024_day23.abap)
 
 # Bye Bye for now, have a wonderful christmas 
 
