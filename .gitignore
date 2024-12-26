@@ -1,0 +1,5 @@
+# Default ignored files
+/java/**/shelf/
+/java/.idea
+/java/out
+/java/test_data

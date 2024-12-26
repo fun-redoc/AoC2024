@@ -362,7 +362,7 @@ solution in:
 + it takes time in ABAP, maybe I'm not so fast....
 + one off errors...
 + I start to like the `reduce` operation in `ABAP`.
-+ Part2 : I have no clue.
++ Part2 : took me some thinikng about and some experimentation in python, the main observation was, that the pattern repeats by mod 8 / div 8 and that one can reuse the results from rear to front. my first try the other way failed. A solution with a DP-tableau is really fine, havent done something alike since university... long time ago.
 
 ### Day 18
 
@@ -401,7 +401,7 @@ solution in:
 duration part 1: `3:20:00` roughly
 duration part 2: `2:10:00` but not ready yet
 perceived difficulty Part 1: *ok* 
-perceived difficulty Part 2: *tricky* 
+perceived difficulty Part 2: *tricky* failed to resolve this Part
 
 solution in:
 [Solution Day 23 Part 1&2](abap/zclaoc2024_day23.abap)
@@ -409,6 +409,7 @@ solution in:
 ##### Observations
 + another variant of BFS 
 + hard to write a fast algorithm
++ for solution one would need a algorithm to find strongly connected graph components...like here: https://en.wikipedia.org/wiki/Strongly_connected_component
 
 # Bye Bye for now, have a wonderful christmas 
 

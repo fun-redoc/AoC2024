@@ -24,13 +24,22 @@ class zclaoc2024_day23 definition
           t_three_group type sorted table of t_node with unique key table_line,
           tt_intercon_group type sorted table of t_node with unique key table_line,
           tt_three_groups type hashed table of t_three_group_repr with unique key table_line,
+
+          "Part2 Data Structures
+          begin of t_nodes_three_groups,
+            node type t_node,
+            grps type tt_three_groups,
+          end of t_nodes_three_groups,
+          tt_nodes_three_groups type hashed table of t_nodes_three_groups with unique key node,
+
           begin of t_queue_intercon,
             grp type t_three_group_repr,
             linked type ref to data,
           end of t_queue_intercon.
       data:
           graph type tt_graph,
-          three_groups type tt_three_groups.
+          three_groups type tt_three_groups,
+          nodes_three_groups type tt_nodes_three_groups.
       methods:
         dump_three_groups returning value(string_repr) type string,
         dump_graph returning value(string_repr) type string,
@@ -50,12 +59,30 @@ class zclaoc2024_day23 definition
         check_has_connection_to_all importing grp type t_three_group_repr
                                               node type t_node
                                     returning value(res) type abap_bool,
+        build_nodes_three_groups,
         find_3_groups.
 endclass.
 
 
 
 class zclaoc2024_day23 implementation.
+
+    method build_nodes_three_groups.
+        loop at three_groups assigning field-symbol(<grp>).
+            do 3 times.
+                data(off) = 2 * ( sy-index - 1 ).
+                data(nd) = <grp>+off(2).
+                read table nodes_three_groups with key node = nd assigning field-symbol(<ntg>).
+                if sy-subrc eq 0.
+                    insert <grp> into table <ntg>-grps.
+                else.
+                    insert value #( node = nd ) into table nodes_three_groups assigning <ntg>.
+                    insert <grp> into  table <ntg>-grps.
+                endif.
+            enddo.
+        endloop.
+    endmethod.
+
     method check_have_two_common.
         " assumption grp1 and grp2 have a sorted representation
         " checking cases  xx., x.x, .xx
@@ -134,21 +161,28 @@ class zclaoc2024_day23 implementation.
 
                 " now I need to find all 3-groups with 3 nodes in common with cur and a connection to the remaining one
                 "  i'm going to loop, if it turns out too slow, i'll improve later
-                loop at three_groups assigning field-symbol(<adj>).
-                    read table finished with key grp = <adj> transporting no fields.
-                    if sy-subrc ne 0.
-                        if <adj> ne cur-grp.
-                            if check_have_two_common( exporting grp1 = cur-grp grp2 = <adj> changing common1 = c1 common2 = c1 other_of_grp2 = other ).
-                                if check_has_connection_to_all( grp = cur-grp node = other ).
-                                    " can be worked on, belongs to the group
-                                    create data r_qintercon.
-                                    r_qintercon->* = cur.
-                                    append value #( grp = <adj> linked = r_qintercon  ) to queue.
-                                endif.
+                do 3 times.
+                    data(off) = 2 * ( sy-index - 1 ).
+                    data(nd) = cur-grp+off(2).
+                    read table nodes_three_groups with key node = nd assigning field-symbol(<ntg>).
+                    if sy-subrc eq 0.
+                        loop at <ntg>-grps assigning field-symbol(<adj>).
+                            read table finished with key grp = <adj> transporting no fields.
+                            if sy-subrc ne 0.
+                                if <adj> ne cur-grp.
+                                    if check_have_two_common( exporting grp1 = cur-grp grp2 = <adj> changing common1 = c1 common2 = c1 other_of_grp2 = other ).
+                                        if check_has_connection_to_all( grp = cur-grp node = other ).
+                                            " can be worked on, belongs to the group
+                                            create data r_qintercon.
+                                            r_qintercon->* = cur.
+                                            append value #( grp = <adj> linked = r_qintercon  ) to queue.
+                                        endif.
+                                    endif.
+                               endif.
                             endif.
-                       endif.
+                        endloop.
                     endif.
-                endloop.
+                enddo.
 
             endwhile.
 
@@ -338,17 +372,20 @@ class zclaoc2024_day23 implementation.
                                      ).
 
         " Part 2
+        build_nodes_three_groups( ).
+
+
         data(max_intercon_group) = find_interconnected_groups(  ).
         data(result_part2) = reduce string( init s = `` for g in max_intercon_group next s = s && g && `,` ).
         result_part2 = substring( val = result_part2 off = 0 len = strlen( result_part2 ) - 1 ).
-        
+
         " since the computation takes more than the web timeout and I have no immidiate idea
         " how wo accelerate, i've sent the progam top background processing
         " will come in an hour or so to look after it....
         " bye bye until then ...
         " have a wonderful christmas time and keep coding.
-        
-        
+
+
 
         result = |Part 1: { result_part1 } Part 2: { result_part2 } \n{ three_groups_dump }\n { graph_dump } |.
     endmethod.
