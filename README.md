@@ -419,7 +419,7 @@ solution in:
 ### Day 22
 
 duration part 1: `0:30:00` 
-duration part 2: `` 
+duration part 2: `some 2:30:00` 
 perceived difficulty Part 1: *easy* 
 perceived difficulty Part 2: *maybe tricky very long text* 
 
@@ -428,6 +428,7 @@ solution in:
 
 ##### Observations
 + ABAP bit wise operation not on integers, conversion to the x type necessary
++ it was a good idea to find a representation for the delta sequences which can be stored and sought for easily (hashval)
 
 ### Day 23
 
