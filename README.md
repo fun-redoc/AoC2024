@@ -414,6 +414,7 @@ solution in:
 ##### Observations
 + the algorithm of choice is backtracking (BFS)### Day 23
 + this time used tabulation from dynamic progrmming
++ main Idea for Part 2 is moving a tabulated circle (square) around every element of the shortest path and checking if there is a cheat which meets the criteria within that circle.
 
 ### Day 22
 
