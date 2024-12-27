@@ -336,13 +336,18 @@ solution in:
 
 ### Day 16
 
-I had to skip, will try it when I have time maybe after christmas.
+duration part 1: `2:00:00` roughly
+duration part 2: `1:30:00`
+perceived difficulty Part 1: *middle* 
+perceived difficulty Part 2: *middle* 
+
+solution in:
+[Solution Day 16 Part 1&2](java/de/rsh/aoc/aoc2024/AOC2024Day16.java)
 
 
 ##### Observations
-+ it takes time in ABAP, maybe I'm not so fast....
-+ this part remainded me of an old crate pushing game (I once implemented in haskell: https://github.com/fun-redoc/sokobal-revisited-no-frp.git)
-+ again massive recursive algorithm....its getting complicated
++ used BFS again, the tricky part was that the maze had cycles, and the simple break criterion (i was here once) is not sufficient.
++ part 2 was not so hard if the solution of part 1 was able to produce all paths. mine was not, so i had to rewrite part 1.
 
 
 ### Day 17
@@ -350,11 +355,11 @@ I had to skip, will try it when I have time maybe after christmas.
 duration part 1: `2:20:00` roughly
 duration part 2: ``
 perceived difficulty Part 1: *easy* 
-perceived difficulty Part 2: ** 
+perceived difficulty Part 2: *tricky* 
 
 solution in:
 [Solution Day 17 Part 1](abap/zclaoc2024_day17part1.abap)
-[Solution Day 17 Part 2](abap/zclaoc2024_day17part2.abap)
+[Solution Day 17 Part 2](python/main17part2.py)
 
 ##### Observations
 + it takes time in ABAP, maybe I'm not so fast....
@@ -388,12 +393,40 @@ perceived difficulty Part 2: *struggeled*
 
 solution in:
 [Solution Day 19 Part 1&2](abap/zclaoc2024_day19.abap)
+[Solution Day (JAVA) 19 Part 1&2](java/de/rsh/aoc/aoc2024/AOC2024Day19.java)
 
 ##### Observations
 + the algorithm of choice is backtracking (BFS) supported by momoization 
 + roughly fir into th biggest number SAP proives
 + using fieldymbols and only chekcing for assignment can leed to time consuming errors
++ for fun i also implemented the solution in java 
 
+### Day 20
+
+duration part 1: `2:30:00` roughly
+duration part 2: ``
+perceived difficulty Part 1: *middle* 
+perceived difficulty Part 2: *tricky* 
+
+solution in:
+[Solution Day 20 Part 1](java/de/rsh/aoc/aoc2024/AOC2024Day20.java)
+
+##### Observations
++ the algorithm of choice is backtracking (BFS)### Day 23
++ this time used tabulation from dynamic progrmming
+
+### Day 22
+
+duration part 1: `0:30:00` 
+duration part 2: `` 
+perceived difficulty Part 1: *easy* 
+perceived difficulty Part 2: *maybe tricky very long text* 
+
+solution in:
+[Solution Day 22 Part 1&2](abap/zclaoc2024_day22.abap)
+
+##### Observations
++ ABAP bit wise operation not on integers, conversion to the x type necessary
 
 ### Day 23
 
@@ -412,7 +445,7 @@ solution in:
 + 2 failed attempts...i've been probably thinking to complicated, but one look in wikipedia should have been helping: https://en.wikipedia.org/wiki/Clique_problem
 
 
-### Day 23
+### Day 25
 
 duration part 1: `1:30:00` roughly
 duration part 2: `lots of time thinking into wrong directions` 
