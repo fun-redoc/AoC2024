@@ -19,9 +19,9 @@ public class Matrix<T> {
        public V2 go(Dir d) {
            return  new V2(x+d.dir.x, y+d.dir.y);
        }
-        public V2 go(V2 v) {
-            return  new V2(x+v.x, y+v.y);
-        }
+        public V2 go(V2 v) { return  new V2(x+v.x, y+v.y); }
+        public V2 sub(V2 v) { return  new V2(x-v.x, y-v.y); }
+        public V2 go(int dx, int dy) { return  new V2(x+dx, y+dy); }
         public V2 turnLeft() {
            return new V2(y,-x);
         }
