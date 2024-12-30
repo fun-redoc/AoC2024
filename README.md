@@ -430,10 +430,11 @@ solution in:
 + ABAP bit wise operation not on integers, conversion to the x type necessary
 + it was a good idea to find a representation for the delta sequences which can be stored and sought for easily (hashval)
 
+
 ### Day 23
 
 duration part 1: `3:20:00` roughly
-duration part 2: `` working on this starts today night....
+duration part 2: `0:22:00` but this was the 3 attempt, i lost mutch time trying to solve the problem without the CS tip from wikipedia concerning finding some maximal clique.
 perceived difficulty Part 1: *ok* 
 perceived difficulty Part 2: *tricky* 
 
@@ -446,16 +447,31 @@ solution in:
 + findig maximal clique algorithm 
 + 2 failed attempts...i've been probably thinking to complicated, but one look in wikipedia should have been helping: https://en.wikipedia.org/wiki/Clique_problem
 
+### Day 24
+
+duration part 1: `2:50:00`
+duration part 2: `2:00:00` took me some time to have an idea 
+perceived difficulty Part 1: *ok* 
+perceived difficulty Part 2: *tricky* 
+
+solution in:
+[Solution Day 24 Part 1&2](abap/zclaoc2024_day24.abap)
+
+##### Observations
++ unexpectedly fast solution using pointers to connect the gates and memoising intermediate results
++ discovered new way of casting pointer in new ABAP without the indirection with `field-symbols` .. simply used `cast <ref_type>( <data> )`, i the same as for objects. same for `create data`, can be replaced by `new <ref_type>( )` - I like this
++ part 2 was for engeneers: wikipedida: https://en.wikipedia.org/wiki/Carry-lookahead_adder#Expansion
+ 
 
 ### Day 25
 
 duration part 1: `1:30:00` roughly
-duration part 2: `lots of time thinking into wrong directions` 
+duration part 2: `` 
 perceived difficulty Part 1: *ok* 
-perceived difficulty Part 2: *easy* after finding the wikipedia clue
+perceived difficulty Part 2: **
 
 solution in:
-[Solution Day 25 Part 1&2](abap/zclaoc2024_day23.abap)
+[Solution Day 25 Part 1&2](abap/zclaoc2024_day25.abap)
 
 ##### Observations
 + really interesing one
