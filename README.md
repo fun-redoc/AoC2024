@@ -7,6 +7,14 @@ ABAP is probably not the most suitable language for this purpose, but non the le
 
 In case a puzzle beeing to tedious for ABAP I can switch java, e.g. if data structures like `Set` or `Map` will be needed and there is no simple way to replace them with ABAP tables. I'm very curious if this will happen.
 
+![Resume Screenshot](images/Screenshot%20From%202025-01-11%2009-07-20.png)
+
+Days in `ABAP`: 20
+ 
+Days in `JAVA`: 4
+
+Days in `python`: 1
+
 ## General remarks
 
 I'm going to check in my solution code in this repository one day after the respective puzzle is unlocked complying to the terms (https://adventofcode.com/2024/about).
@@ -181,8 +189,9 @@ perceived difficulty Part 2: *to hard*
 
 nonetheless took me a lot of time....
 
-I have not found the solution for part 2. 
-Found 1161 but its to low. I'will have to produce own testcases and trying to undestand better the differen cases.
+##### Observations:
++ lots of cases to cover
++ almost gave up, but finally succeded
 
 solution in:
 [Solution Day 6 Part 1](abap/zclaoc2024_day6part1.abap)
@@ -416,6 +425,21 @@ solution in:
 + this time used tabulation from dynamic progrmming
 + main Idea for Part 2 is moving a tabulated circle (square) around every element of the shortest path and checking if there is a cheat which meets the criteria within that circle.
 
+### Day 21
+
+duration part 1: `1:30:00` roughly
+duration part 2: `endless`
+perceived difficulty Part 1: *middle* 
+perceived difficulty Part 2: *tricky* 
+
+solution in:
+[Solution Day 21 Part 1](java/de/rsh/aoc/aoc2024/AOC2024Day21.java)
+
+##### Observations
++ a good caching strategy is needed, there are reains of my trials still in solution code
++ precomputing the shortest pathes within the key pad is the key idea
++ I came out with the solution first when i gave up trying to create the whole control code for level 25, stupid me, the quest only asks for the number, which is much easierer to compute
+
 ### Day 22
 
 duration part 1: `0:30:00` 
@@ -474,9 +498,8 @@ solution in:
 [Solution Day 25 Part 1&2](abap/zclaoc2024_day25.abap)
 
 ##### Observations
-+ really interesing one
-+ part 2 I needed a hint from wikipedia, what i worked on primnary was a try to find all max cliques what seems to be an unsolved problem...
-+ this recording was a rerecording, i already solved the puzzle in python - which I like when tinkering around.
++ really nice one for the finish
+
 
 ## Copyrights and Credits
 + [SAP](https://www.sap.de/), miniSAP, SAP NW, SAP Netweaver, ADT, SE80, SAPGUI, bsp,  [ABAP](https://community.sap.com/topics/abap) etc. blong to SAP Company

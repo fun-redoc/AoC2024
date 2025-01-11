@@ -1,17 +1,24 @@
 package de.rsh.aoc;
 
+import java.util.Map;
+import java.util.Optional;
+
 public class Matrix<T> {
-    public static Dir[] dirs = {Matrix.Dir.N, Matrix.Dir.S, Matrix.Dir.W, Matrix.Dir.E};
+    public static Dir[] dirs = {Matrix.Dir.W, Matrix.Dir.E, Matrix.Dir.N, Matrix.Dir.S};
+    public static Map<Character, Dir> keyToDir = Map.of('^', Matrix.Dir.N, '<', Dir.W, 'v', Dir.S, '>', Dir.E);
     public static enum Dir {
-        N(new V2(0, -1)), S(new V2(0, +1)), W(new V2(-1, 0)), E(new V2(+1, 0));
+        N(new V2(0, -1), '^'), S(new V2(0, +1), 'v'), W(new V2(-1, 0), '<'), E(new V2(+1, 0), '>');
         V2 dir;
-
-        Dir(V2 dir) {
+        char c;
+        Dir(V2 dir, char c) {
             this.dir = dir;
+            this.c = c;
         }
-
         public V2 vec() {
             return dir;
+        }
+        public char c() {
+            return c;
         }
     }
 
@@ -32,10 +39,8 @@ public class Matrix<T> {
         @Override
         public boolean equals(Object o) {
             if (!(o instanceof V2 v2)) throw new ClassCastException();
-
             return x() == v2.x() && y() == v2.y();
         }
-
         @Override
         public int hashCode() {
             int result = String.format("%d%d",x,y).hashCode();
@@ -83,13 +88,25 @@ public class Matrix<T> {
     public T get(V2 pos) {
         return field[pos.x + pos.y*cols];
     }
-    public void put(T t, int x, int y) {
+    public Matrix<T> put(T t, int x, int y) {
         field[x + y*cols] = t;
+        return this;
     }
-    public void put(T t, V2 pos) {
+    public Matrix<T> put(T t, V2 pos) {
         field[pos.x + pos.y*cols] = t;
+        return this;
     }
-
+    public <T extends Comparable<?>> Optional<V2> posOf(T c) {
+        // TODO iff not performant enugh, may be memoizing content in a Map could help accelerate
+        for(int y = 0; y < rows; y++) {
+            for(int x = 0; x <cols; x++) {
+                if( c.equals(get(x,y)) ) {
+                    return Optional.of( new V2(x,y) );
+                }
+            }
+        }
+        return Optional.empty();
+    }
     @Override
     public String toString() {
         int maxCellLen = 0;
